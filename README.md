@@ -12,9 +12,6 @@ https://imputationserver.sph.umich.edu/start.html#!pages/help
           2. vcftools to subset the SNPs from the imputed file(https://vcftools.github.io/examples.html).
           3. PyVCF (https://github.com/jamescasbon/PyVC).
 
-```
-Give examples
-```
 
 ### Installing
 
@@ -25,7 +22,7 @@ Prepare the input file
 vcftools --gzvcf chr11.dose.vcf.gz --snps HapListTest.txt --recode --recode-INFO-all --out sa_hap
 bgzip -c sa_hap.recode.vcf >sa_hap.vcf.gz
 tabix -p vcf sa_hap.vcf.gz`
-
+```
 Run the classifier
 ```
 python hapClassifier.py input(bgzipped and tabix indexed file) output file(text file name)
