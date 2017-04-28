@@ -10,20 +10,14 @@ https://imputationserver.sph.umich.edu/start.html#!pages/help
 ### Prerequisite
 
           1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively.
-          ```
           [HTSlib](https://github.com/samtools/htslib)
-          ```
           
           2. VCFtools to subset the SNPs from the imputed file 
           
-          ```
           [VCFtools](https://vcftools.github.io/examples.html).
-          ```
           
           3. PyVCF.
-          ```
           [PyVCF](https://github.com/jamescasbon/PyVC).
-          ```
 
 ### Installing
 
@@ -46,10 +40,9 @@ python hapClassifier.py input(bgzipped and tabix indexed file) output file(text 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
+This project is developed under the 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+* PyVCF developer 
+* HTSliB developers
+* VCFtools developers
