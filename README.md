@@ -9,7 +9,7 @@ This scritp requires an input as vcf file of phased-imputed GWAS data.The phased
 https://imputationserver.sph.umich.edu/start.html#!pages/help
 ### Prerequisite
 ```
-          1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively [HTSlib](https://github.com/samtools/htslib)
+          1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively ```[HTSlib](https://github.com/samtools/htslib)```
           2. VCFtools to subset the SNPs from the imputed file [VCFtools](https://vcftools.github.io/examples.html).
           3. PyVCF[PyVCF](https://github.com/jamescasbon/PyVC).
 ```
