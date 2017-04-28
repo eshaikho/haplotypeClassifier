@@ -36,7 +36,8 @@ python hapClassifier.py input(bgzipped and tabix indexed file) output file(text 
 
 ## License
 
-This project is developed under the 
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
 ## Acknowledgments
 
 * PyVCF developer 
