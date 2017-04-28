@@ -4,20 +4,18 @@ import subprocess
 import sys
 ## This script takes the input file as first argument and output file as second argument
 ## python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)
-## This script takes the input file as first argument and output file as second argument
-## python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)
-
+## Check input and out put files
 if len(sys.argv) < 3:
-    print "Error: one or more arguement is/are missing"
-    print "python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)"
-    exit(1)
+    	print "Error: one or more arguement is/are missing"
+    	print "python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)"
+    	exit(1)
 else:
 ## Define input and output files	
 	inputFile = sys.argv[1] 
 	outputFile = sys.argv[2] 
 	print 'Input file:'+ sys.argv[1]
 	print 'Output file:'+ sys.argv[2]
- 
+	
 ## open file for writing Haps Classes
 target = open(outputFile, 'w')
 ### read vcf.gz
