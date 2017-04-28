@@ -21,13 +21,13 @@ Download the hapClassifier script and save in the directory contains the file yo
 
 Prepare the input file
 ```
-vcftools --gzvcf chr11.dose.vcf.gz --snps HapListTest.txt --recode --recode-INFO-all --out sa_hap
-bgzip -c sa_hap.recode.vcf >sa_hap.vcf.gz
-tabix -p vcf sa_hap.vcf.gz
+vcftools --gzvcf input_file.vcf.gz --snps SNPs.txt --recode --recode-INFO-all --output_file
+bgzip -c output_file.recode.vcf >output_file.vcf.gz
+tabix -p vcf output_file.vcf.gz
 ```
 Run the classifier
 ```
-python hapClassifier.py input(bgzipped and tabix indexed file) output file(text file name)
+python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(the name of the file)
 ```
 
 ## Authors
