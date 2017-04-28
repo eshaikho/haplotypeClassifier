@@ -17,18 +17,22 @@ This scritp requires an input as vcf file of phased-imputed GWAS data.The phased
 
 ### Installing
 
-Download the hapClassifier script and save in the directory contains the file you need to classify and run the following example commands:
+Download the hapClassifier script and save it in the directory that contains the file you need to classify and run the following example commands:
 
-Prepare the input file
-```
-vcftools --gzvcf input_file.vcf.gz --snps SNPs.txt --recode --recode-INFO-all --output_file
-bgzip -c output_file.recode.vcf >output_file.vcf.gz
-tabix -p vcf output_file.vcf.gz
-```
-Run the classifier
-```
-python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(the name of the file)
-```
+          Prepare the input file
+          ```
+          vcftools --gzvcf input_file.vcf.gz --snps SNPs.txt --recode --recode-INFO-all --output_file
+          ```
+          ```
+          bgzip -c output_file.recode.vcf > output_file.vcf.gz
+          ```
+          ```
+          tabix -p vcf output_file.vcf.gz
+          ```
+          Run the classifier
+          ```
+          python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(the name of the file)
+          ```
 
 ## Authors
 
