@@ -1,19 +1,16 @@
 # haplotypeClassifier
 Phased SNP-based Classification of Sickle Cell Anemia HBB Haplotypes.
 
-This script takes a vcf file with tabix index to classify sickle cell haplotypes based on 4 SNPs.
-
-# Project Title
-
-One Paragraph of project description goes here
+This is a SNP-based Method to classify sickle cell haplotypes based on 4 SNPs.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
+This scritp requires an input as vcf file of phased-imputed GWAS data.The phased GWAS data allow assigning of SNPs to paternal and maternal chromosomes which facilitates the classification procedure. Imputation and data preperation can be done using different tools and resources. We used Michigan Imputation server to impute data used in this project.See the link below for more information.
+https://imputationserver.sph.umich.edu/start.html#!pages/help
 ### Prerequisites
-
-What things you need to install the software and how to install them
+ Markup : 1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively(https://github.com/samtools/htslib)
+          2. vcftools to subset the SNPs from the imputed file(https://vcftools.github.io/examples.html).
+          3. PyVCF (https://github.com/jamescasbon/PyVC).
 
 ```
 Give examples
@@ -21,65 +18,22 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you have to get a development env running
+Download the hapClassifier script and save in the directory contains the file you need to classify and run the following example commands:
 
-Say what the step will be
-
+Prepare the input file
 ```
-Give the example
+vcftools --gzvcf chr11.dose.vcf.gz --snps HapListTest.txt --recode --recode-INFO-all --out sa_hap
+bgzip -c sa_hap.recode.vcf >sa_hap.vcf.gz
+tabix -p vcf sa_hap.vcf.gz`
+
+Run the classifier
 ```
-
-And repeat
-
+python hapClassifier.py input(bgzipped and tabix indexed file) output file(text file name)
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Elmutaz Shaikho** - *Initial work* - [PurpleBooth](https://github.com/eshaikho/haplotypeClassifier)]
 
 ## License
 
