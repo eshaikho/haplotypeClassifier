@@ -7,11 +7,12 @@ This is a SNP-based Method to classify sickle cell haplotypes based on 4 SNPs.
 
 This scritp requires an input as vcf file of phased-imputed GWAS data.The phased GWAS data allow assigning of SNPs to paternal and maternal chromosomes which facilitates the classification procedure. Imputation and data preperation can be done using different tools and resources. We used Michigan Imputation server to impute data used in this project.See the link below for more information.
 https://imputationserver.sph.umich.edu/start.html#!pages/help
-### Prerequisites
- Markup : 1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively(https://github.com/samtools/htslib)
+### Prerequisite
+```
+          1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively(https://github.com/samtools/htslib)
           2. vcftools to subset the SNPs from the imputed file(https://vcftools.github.io/examples.html).
           3. PyVCF (https://github.com/jamescasbon/PyVC).
-
+```
 
 ### Installing
 
@@ -21,7 +22,7 @@ Prepare the input file
 ```
 vcftools --gzvcf chr11.dose.vcf.gz --snps HapListTest.txt --recode --recode-INFO-all --out sa_hap
 bgzip -c sa_hap.recode.vcf >sa_hap.vcf.gz
-tabix -p vcf sa_hap.vcf.gz`
+tabix -p vcf sa_hap.vcf.gz
 ```
 Run the classifier
 ```
@@ -30,7 +31,7 @@ python hapClassifier.py input(bgzipped and tabix indexed file) output file(text 
 
 ## Authors
 
-* **Elmutaz Shaikho** - *Initial work* - [PurpleBooth](https://github.com/eshaikho/haplotypeClassifier)]
+* **Elmutaz Shaikho** - *Initial work* - [hapClassifier](https://github.com/eshaikho/haplotypeClassifier)
 
 ## License
 
