@@ -20,7 +20,7 @@ https://imputationserver.sph.umich.edu/start.html#!pages/help
           3. PyVCF.
           ```
           [PyVCF](https://github.com/jamescasbon/PyVC).
-
+          
 ### Installing
 
 Download the hapClassifier script and save in the directory contains the file you need to classify and run the following example commands:
