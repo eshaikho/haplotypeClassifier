@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+################################################################################
+# hapClassifier.py is script to classify sickle cell haplotypes		       #
+# Copyright (c) [2017] [Elmutaz Shaikho Elhaj Mohammed]			       #
+################################################################################
 import vcf
 import subprocess
 import sys
