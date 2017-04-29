@@ -40,7 +40,7 @@ python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(
 
 ## Authors
 
-* **Elmutaz Shaikho** - *Phased SNP-based Classification of Sickle Cell Anemia HBB Haplotypes* - [hapClassifier](https://github.com/eshaikho/haplotypeClassifier)
+* **Elmutaz Shaikho** - *Phased SNP-based Classification of Sickle Cell Anemia HBB Haplotypes* - [haplotypeClassifier](https://github.com/eshaikho/haplotypeClassifier)
 
 ## License
 
