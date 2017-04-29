@@ -97,7 +97,7 @@ for smpl in samples:
 	if Hapclass_M != Hapclass_F:
 		target.write( smpl +'\t' + classF + '/' + classM  + '\n' )					
 target.close()
-## change hetro classification eg BEN/CAM and CAM/BEN to be only one of them BEN/CAM
+## change heterozygous classification eg BEN/CAM and CAM/BEN to be only one of them BEN/CAM
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/SEN/SEN\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/SAU/SAU\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/CAR/CAR\/BEN/g", outputFile])
