@@ -23,7 +23,7 @@ Download the hapClassifier script and save it in the directory that contains the
 ```
 vcftools --gzvcf input_file.vcf.gz --snps SNPs.txt --recode --recode-INFO-all --output_file
 ```
-The above command will the subset the imputed file and create a file contain only 4 SNPs
+The above command will subset the imputed file and create a file contain only 4 SNPs
 ```
 bgzip -c output_file.recode.vcf > output_file.vcf.gz
 ```
@@ -40,7 +40,7 @@ python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(
 
 ## Authors
 
-* **Elmutaz Shaikho** - *Initial work* - [hapClassifier](https://github.com/eshaikho/haplotypeClassifier)
+* **Elmutaz Shaikho** - *Phased SNP-based Classification of Sickle Cell Anemia HBB Haplotypes* - [haplotypeClassifier](https://github.com/eshaikho/haplotypeClassifier)
 
 ## License
 
