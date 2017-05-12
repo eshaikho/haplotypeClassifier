@@ -15,7 +15,7 @@ This scritp requires an input as vcf file of phased-imputed GWAS data.The phased
 pip install pyvcf
 ```
           
-2. Pysam ([PyVCF](https://github.com/pysam-developers/pysam)).
+2. Pysam ([Pysam](https://github.com/pysam-developers/pysam)).
 
 
 ```
