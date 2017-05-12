@@ -3,17 +3,19 @@
 # hapClassifier.py is script to classify sickle cell haplotypes	
 # Copyright (c) [2017] [Elmutaz Shaikho Elhaj Mohammed]
 ################################################################################
+#!/usr/local/bin/
 import vcf
 import subprocess
 import sys
 import pysam
+import os
 ## This script takes the input file as first argument and output file as second argument
 ## python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)
 ## Check input and out put files
 if len(sys.argv) < 3:
-    print "Error: one or more arguement is/are missing"
-    print "python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)"
-    exit(1)
+	print "Error: one or more arguement is/are missing"
+	print "python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)"
+	exit(1)
 else:
 ## Define input and output files	
 	inputFile = sys.argv[1] 
@@ -23,18 +25,26 @@ else:
 	
 ## open file for writing Haps Classes
 target = open(outputFile, 'w')
+
 ### read vcf.gz
 vcf_reader = vcf.Reader(filename=inputFile)	
-## get all samples
+
+## Get all samples
 samples = vcf_reader.samples
 
-## define a list to fetch SNPs by position. coordinates are in the zero-based
+## Define a list to fetch SNPs by position. coordinates are in the zero-based
+## Coordinates Should be according to Human Genome Reference b37
 snpList = [5291562, 5269798, 5263682, 5260457]
+
 ## get 4 SNPs records needed for classification
-records=[]
-for i in snpList:
-	for record in vcf_reader.fetch('11', i,(i+1)):
-		records.append(record)
+records=[record for i in snpList for record in vcf_reader.fetch('11', i,(i+1))]
+
+## Check in records is empty
+if not records:
+	print "Error: Data may does not have the SNPs need for classification,\n \
+	or SNPs locations and/or RSID do not match Humanan genome Reference b37 dbSNP build 141"
+	exit(1)
+
 ## Check if the data is phased or not, if not EXIT and print error messege
 call = record.genotype(samples[0])
 if not call.phased:
@@ -54,7 +64,7 @@ else:
 	CAR_HET = {'11:5291563' : 'G','11:5269799' : 'C', '11:5263683' : 'C' , '11:5260458' : 'C'}
 	CAM_HET = {'11:5291563' : 'G','11:5269799' : 'A', '11:5263683' : 'C' , '11:5260458' : 'T'}
 
-## form hap classes dictionaries from the data		
+## Form hap classes dictionaries from the data		
 for smpl in samples:
 	keys = keys =[records[i].ID for i in range(len(records))]
 	values_M = [(records[i].genotype(smpl).gt_bases).split('|')[0] for i in range(len(records))]
@@ -107,7 +117,8 @@ for smpl in samples:
 	if Hapclass_M != Hapclass_F:
 		target.write( smpl +'\t' + classF + '/' + classM  + '\n' )					
 target.close()
-## change hetro classification eg BEN/CAM and CAM/BEN to be only one of them BEN/CAM
+
+## Change hetro classification eg BEN/CAM and CAM/BEN to be only one of them BEN/CAM
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/SEN/SEN\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/AI/AI\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/CAR/CAR\/BEN/g", outputFile])
@@ -123,3 +134,6 @@ sub = subprocess.call(['sed', '-i.bak', r"s/SEN\/UNK/UNK\/SEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/CAM\/UNK/UNK\/CAM/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/CAR\/UNK/UNK\/CAR/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/AI\/UNK/UNK\/AI/g", outputFile])
+
+## Remove backup file
+os.remove(outputFile+r".bak")
