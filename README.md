@@ -9,29 +9,25 @@ This scritp requires an input as vcf file of phased-imputed GWAS data.The phased
 ([Michigan Imputation Server](https://imputationserver.sph.umich.edu/start.html#!pages/help)).
 ### Prerequisite
 
-1. HTSlib that contains bgzip and tabix to zip and index the vcf files, respectively ([HTSlib](https://github.com/samtools/htslib)).
-          
-2. VCFtools to subset the SNPs from the imputed file ([VCFtools](https://vcftools.github.io/examples.html)).
-          
-3. PyVCF ([PyVCF](https://github.com/jamescasbon/PyVCF)).
+1. PyVCF ([PyVCF](https://github.com/jamescasbon/PyVCF)).
 
+```
+pip install pyvcf
+
+```
+          
+2. Pysam ([PyVCF](https://github.com/pysam-developers/pysam)).
+
+
+```
+pip install pysam
+
+```
+          
 ### Installing
 
 Download the hapClassifier script and save it in the directory that contains the file you need to classify and run the following example commands:
 
-**Prepare the input file**
-```
-vcftools --gzvcf input_file.vcf.gz --snps SNPs.txt --recode --recode-INFO-all --output_file
-```
-The above command will subset the imputed file and create a file contain only 4 SNPs
-```
-bgzip -c output_file.recode.vcf > output_file.vcf.gz
-```
-The above command will compress the vcf file to be ready for tabix indexing
-```
-tabix -p vcf output_file.vcf.gz
-```
-The above command with create a tabix index required for the classification script
 
 **Run the classifier**
 ```
@@ -49,5 +45,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * PyVCF developer 
-* HTSliB developers
-* VCFtools developers
+* pysam developer
