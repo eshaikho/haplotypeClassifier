@@ -30,9 +30,9 @@ Download the hapClassifier script and save it in the directory that contains the
 **Run the classifier**
 ```
 python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(the name of the file) 
+## Running test example .....
 
 python hapClassifier.py example.vcf.gz example2_output.txt
-
 ```
 You can run the above example using the example data (example.vcf.gz), example2_output.txt should be as same as the output example.
 
