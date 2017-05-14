@@ -23,7 +23,7 @@ else:
 	print 'Input file:'+ sys.argv[1]
 	print 'Output file:'+ sys.argv[2]
 	
-## open file for writing Haps Classes
+## Open output file for writing Haps Classes
 target = open(outputFile, 'w')
 
 ### read vcf.gz
@@ -32,7 +32,7 @@ vcf_reader = vcf.Reader(filename=inputFile)
 ## Get all samples
 samples = vcf_reader.samples
 
-## Define a list to fetch SNPs by position. coordinates are in the zero-based
+## Define a list to fetch SNPs by position. coordinates in snpList are zero-based
 ## Coordinates Should be according to Human Genome Reference b37
 snpList = [5291562, 5269798, 5263682, 5260457]
 
@@ -50,6 +50,8 @@ call = record.genotype(samples[0])
 if not call.phased:
 	print "Error: Data is not phased"
 	exit(1)
+
+## Defining halpotype Dictionaries using RSID or Chromosome:Position as SNP ID
 if "rs" in records[1].ID:
 	AI_HET = {'rs3834466' : 'GT','rs28440105': 'C', 'rs10128556' : 'T' , 'rs968857' : 'T'} 
 	SEN_HET = {'rs3834466' : 'G','rs28440105' : 'C', 'rs10128556' : 'T' , 'rs968857' : 'T'} 
@@ -118,7 +120,7 @@ for smpl in samples:
 		target.write( smpl +'\t' + classF + '/' + classM  + '\n' )					
 target.close()
 
-## Change hetro classification eg BEN/CAM and CAM/BEN to be only one of them BEN/CAM
+## Change hetro classification e.g. BEN/CAM and CAM/BEN to be only one of them BEN/CAM
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/SEN/SEN\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/AI/AI\/BEN/g", outputFile])
 sub = subprocess.call(['sed', '-i.bak', r"s/BEN\/CAR/CAR\/BEN/g", outputFile])
