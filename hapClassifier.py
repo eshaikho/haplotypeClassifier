@@ -14,7 +14,7 @@ import os
 ## Check input and out put files
 if len(sys.argv) < 3:
 	print "Error: one or more arguement is/are missing"
-	print "python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)"
+	print "python hapClassifier.py input(bgzipped and tabix indexed file) output file(text file name)"
 	exit(1)
 else:
 ## Define input and output files	
@@ -52,7 +52,7 @@ if not call.phased:
 	exit(1)
 
 ## Defining halpotype Dictionaries using RSID or Chromosome:Position as SNP ID
-if "rs" in records[1].ID:
+if "rs" in records[0].ID:
 	AI_HET = {'rs3834466' : 'GT','rs28440105': 'C', 'rs10128556' : 'T' , 'rs968857' : 'T'} 
 	SEN_HET = {'rs3834466' : 'G','rs28440105' : 'C', 'rs10128556' : 'T' , 'rs968857' : 'T'} 
 	BEN_HET = {'rs3834466' : 'G','rs28440105' : 'C', 'rs10128556' : 'C' , 'rs968857' : 'T'}
