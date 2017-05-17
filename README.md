@@ -35,7 +35,7 @@ python hapClassifier.py input_file(bgzipped and tabix indexed file) output_file(
 
 python hapClassifier.py test_example.vcf.gz test_example2_output.txt
 ```
-You can run the above example using the example data (example.vcf.gz), test_example2_output.txt should be as same as the example_output.txt.
+You can run the above example using the example data (test_example.vcf.gz), test_example2_output.txt should be as same as the test_example_output.txt.
 
 ## Author
 
