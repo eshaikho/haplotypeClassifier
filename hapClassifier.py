@@ -10,7 +10,7 @@ import sys
 import pysam
 import os
 ## This script takes the input file as first argument and output file as second argument
-## python hapClassifier_rs_pSnps_git.py input(bgzipped and tabix indexed file) output file(text file name)
+## python hapClassifier.py input(bgzipped and tabix indexed file) output file(text file name)
 ## Check input and out put files
 if len(sys.argv) < 3:
 	print "Error: one or more arguement is/are missing"
