@@ -41,7 +41,7 @@ records=[record for i in snpList for record in vcf_reader.fetch('11', i,(i+1))]
 
 ## Check in records is empty
 if not records:
-	print "Error: Data may does not have the SNPs need for classification,\n \
+	print "Error: Data may does not have the SNPs needed for classification,\n \
 	or SNPs locations and/or RSID do not match Humanan genome Reference b37 dbSNP build 141"
 	exit(1)
 
